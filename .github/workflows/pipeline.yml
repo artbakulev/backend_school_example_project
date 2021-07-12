@@ -1,0 +1,8 @@
+name: Check homework
+on: [push]
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - run: docker build -t tasks .
+      - run: docker run tasks
