@@ -4,5 +4,9 @@ jobs:
   pytest:
     runs-on: ubuntu-latest
     steps:
-      - run: docker build -t tasks .
-      - run: docker run tasks
+      - uses: actions/checkout@main
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - run: pip install -r requirements.txt
+      - run: pytest tests
