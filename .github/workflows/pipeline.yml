@@ -10,3 +10,11 @@ jobs:
           python-version: '3.9'
       - run: pip install -r requirements.txt
       - run: pytest tests
+  validate:
+    runs-on: ubuntu-latest
+    env:
+      CALLBACK_TASK_ID: 123123
+    steps:
+      - uses: actions/checkout@main
+      - run: docker pull artbakulev/validator-${{ env.CALLBACK_TASK_ID }}:latest
+      - run: docker run --mount src="$(pwd)",target=/go/code/source,type=bind artbakulev/validator-${{ env.CALLBACK_TASK_ID }}:latest
