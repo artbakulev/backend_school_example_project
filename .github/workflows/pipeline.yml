@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: pytest
     env:
-      CALLBACK_TASK_ID: 123123
+      CALLBACK_TASK_ID: aa54e9cf-3598-45db-a65e-e95d03c029c0
     steps:
       - uses: actions/checkout@main
       - run: docker pull artbakulev/validator-${{ env.CALLBACK_TASK_ID }}:latest
